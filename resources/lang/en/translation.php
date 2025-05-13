@@ -17,6 +17,7 @@ return [
         'edit' => 'Edit',
         'detail' => 'Detail',
         'delete' => 'Delete',
+        'update' => 'Update',
         'save' => 'Save',
         'cancel' => 'Cancel',
         'search' => 'Search',
@@ -77,6 +78,7 @@ return [
         'status_0' => 'New',
         'status_1' => 'Read',
         'status_2' => 'Replied',
+        'us' => 'Contact Us',
     ],
     'web' => [
         'home' => 'Home',
@@ -84,5 +86,15 @@ return [
         'contact' => 'Contact',
         'product' => 'Product',
         'category' => 'Category',
+    ],
+    'slider' => [
+        'name' => 'Name',
+        'title' => 'Title',
+        'link' => 'Link',
+        'image' => 'Image',
+    ],
+    'setting' => [
+        'key' => 'Key',
+        'value' => 'Value',
     ]
 ];

@@ -27,7 +27,7 @@ class CategoryRequest extends FormRequest
                 'name' => 'required|max:255|unique:categories',
                 'description' => 'nullable|max:255',
                 'image' => [
-                    'nullable',
+                    'required',
                     'image',
                     'mimes:jpeg,png,jpg',
                     'max:5120',

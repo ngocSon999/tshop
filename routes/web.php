@@ -6,6 +6,8 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Middleware\CheckUserLogin;
@@ -80,5 +82,24 @@ Route::prefix('admin')->middleware([CheckUserLogin::class])->name('admin.')->gro
         Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ContactController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [ContactController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/slider')->name('slider.')->group(function () {
+        Route::get('/', [SliderController::class, 'index'])->name('index');
+        Route::get('/list', [SliderController::class, 'list'])->name('list');
+        Route::get('/create', [SliderController::class, 'create'])->name('create');
+        Route::post('/store', [SliderController::class, 'store'])->name('store');
+        Route::get('/show/{id}', [SliderController::class, 'show'])->name('show');
+        Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [SliderController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [SliderController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/setting')->name('setting.')->group(function () {
+        Route::get('/', [SettingController::class, 'index'])->name('index');
+        Route::get('/list', [SettingController::class, 'list'])->name('list');
+        Route::get('/show/{id}', [SettingController::class, 'show'])->name('show');
+        Route::put('/update/{id}', [SettingController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [SettingController::class, 'delete'])->name('delete');
     });
 });

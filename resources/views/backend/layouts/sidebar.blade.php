@@ -31,6 +31,15 @@
                 </ul>
             </li>
             <li class="nav-item has-submenu">
+                <a class="nav-link" href="#sliderMenu" data-bs-toggle="collapse" aria-expanded="false">
+                    <i class="bi bi-pie-chart"></i>{{ __('translation.menu.slider') }}
+                </a>
+                <ul class="collapse submenu" id="sliderMenu">
+                    <li><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="bi bi bi-card-list"></i>{{ __('translation.menu.list') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.slider.create') }}"><i class="bi bi bi-plus-square"></i>{{ __('translation.menu.add') }}</a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
                 <a class="nav-link" href="#contactMenu" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="bi bi-phone"></i>{{ __('translation.menu.contact') }}
                 </a>
@@ -44,6 +53,7 @@
                 </a>
                 <ul class="collapse submenu" id="settingMenu">
                     <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="bi bi bi-building"></i>{{ __('translation.menu.about') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="bi bi bi-building"></i>{{ __('translation.menu.setting') }}</a></li>
                 </ul>
             </li>
 

@@ -17,6 +17,7 @@ return [
         'edit' => 'Sửa',
         'detail' => 'Chi tiết',
         'delete' => 'Xóa',
+        'update' => 'Cập nhật',
         'save' => 'Lưu',
         'cancel' => 'Hủy',
         'search' => 'Tìm kiếm',
@@ -77,6 +78,7 @@ return [
         'status_0' => 'Mới',
         'status_1' => 'Đã xem',
         'status_2' => 'Đã trả lời',
+        'us' => 'Liên hệ với chúng tôi',
     ],
     'web' => [
         'home' => 'Trang chủ',
@@ -84,5 +86,15 @@ return [
         'contact' => 'Liên hệ',
         'product' => 'Sản phẩm',
         'category' => 'Danh mục',
+    ],
+    'slider' => [
+        'name' => 'Tên',
+        'title' => 'Tiêu đề',
+        'link' => 'Liên kết',
+        'image' => 'Hình ảnh',
+    ],
+    'setting' => [
+        'key' => 'Khóa',
+        'value' => 'Giá trị',
     ]
 ];

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 @section('title', __('translation.menu.category'))
 @section('content')
-    <section id="products" class="py-5">
+    <section id="" class="py-4">
         <div class="container">
             <h2 class="text-center mb-4 text-uppercase fw-bold">{{ __('translation.menu.product') }} - {{ $category->name }}</h2>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

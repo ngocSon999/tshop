@@ -1,22 +1,17 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\AboutRepository;
-use App\Http\Services\Impl\AboutServiceInterface;
+use App\Http\Repositories\SettingRepository;
+use App\Http\Services\Impl\SettingServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
 
-class AboutService extends BaseService implements AboutServiceInterface
+class SettingService extends BaseService implements SettingServiceInterface
 {
     use StorageImage;
     public function repository(): string
     {
-        return AboutRepository::class;
-    }
-
-    public function getOne()
-    {
-        return $this->repository->getOne();
+        return SettingRepository::class;
     }
 
     /**
@@ -33,11 +28,6 @@ class AboutService extends BaseService implements AboutServiceInterface
      */
     public function update(array $data, $id): void
     {
-        $data = $this->formatData($data);
-        $about = $this->repository->findById($id);
-        if ($about->image) {
-            $this->deleteImage($about->image);
-        }
         $this->repository->update($data, (int) $id);
     }
 

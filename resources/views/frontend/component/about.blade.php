@@ -1,4 +1,4 @@
-<section id="about" class="bg-light py-5">
+<section id="about" class="py-2">
     <div class="container">
         <div class="row">
             <div class="col-md-6">

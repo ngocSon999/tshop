@@ -2,37 +2,38 @@
 
 @section('content')
     <div class="row">
-        <form action="{{ route('admin.category.update', $id = $category->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.slider.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="row">
                 <div class="form-group col-md-6 col-12">
-                    <label class="form-label" for="name">{{ __('translation.category.category_name') }}</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $category->name) }}">
+                    <label class="form-label" for="name">{{ __('translation.slider.name') }}</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                     @error('name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group col-md-6 col-12">
-                    <label class="form-label" for="description">{{ __('translation.category.category_description') }}</label>
-                    <input type="text" class="form-control" id="description" name="description" value="{{ old('description', $category->description) }}">
-                    @error('description')
+                    <label class="form-label" for="title">{{ __('translation.slider.title') }}</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                    @error('title')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 col-12">
+                    <label class="form-label" for="link">{{ __('translation.slider.link') }}</label>
+                    <input type="text" class="form-control" id="link" name="link" value="{{ old('link') }}">
+                    @error('link')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group col-md-6 col-12">
                     <label class="form-label" for="image">{{ __('translation.menu.image') }}</label>
-                    <input type="file" class="form-control" id="phone" name="image" value="{{ old('image') }}">
+                    <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}">
                     @error('image')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    @if($category->image)
-                        <div class="mt-2">
-                            <img src="{{ asset($category->image) }}" alt="Slider Image" class="img-thumbnail" style="width: 100px; height: 100px;">
-                        </div>
-                    @endif
                 </div>
             </div>
             <div class="row mt-2">

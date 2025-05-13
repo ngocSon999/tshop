@@ -29,7 +29,7 @@
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ __('translation.web.category') }}
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu" style="border: none" aria-labelledby="navbarDropdown">
                                     @foreach($categories as $category)
                                         <li><a class="dropdown-item" href="{{ route('web.category', $category->id) }}">{{ $category->name }}</a></li>
                                     @endforeach

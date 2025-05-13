@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Services\Impl\AboutServiceInterface;
 use App\Http\Services\Impl\CategoryServiceInterface;
+use App\Http\Services\Impl\SliderServiceInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -35,11 +36,15 @@ class ViewServiceProvider extends ServiceProvider
                     if (str_starts_with($currentAction, $controller)) {
                         $categoryService = app(CategoryServiceInterface::class);
                         $aboutService = app(AboutServiceInterface::class);
+                        $slidersService = app(SliderServiceInterface::class);
+
                         $categories = $categoryService->findAll();
                         $about = $aboutService->getOne();
+                        $sliders = $slidersService->findAll();
                         $view->with([
                             'categories' => $categories,
                             'about' => $about,
+                            'sliders' => $sliders,
                         ]);
                         break;
                     }

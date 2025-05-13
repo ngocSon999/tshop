@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Impl\ContactServiceInterface;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +48,7 @@ class ContactController extends Controller
             DB::commit();
 
             return redirect()->route('web.contact')->with('success', 'Contact created successfully.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return redirect()->back()->with('error', 'Failed to Create contact: ' . $e->getMessage());
@@ -83,7 +84,7 @@ class ContactController extends Controller
             DB::commit();
 
             return redirect()->route('admin.contact.index')->with('success', 'Contact updated successfully.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return redirect()->back()->with('error', 'Failed to update Contact: ' . $e->getMessage());
@@ -107,6 +108,9 @@ class ContactController extends Controller
         return response()->json($data);
     }
 
+    /**
+     * @throws Exception
+     */
     public function updateStatus(Request $request): JsonResponse
     {
         $data = $this->contactService->updateStatus($request->all());

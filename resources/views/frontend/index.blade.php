@@ -4,10 +4,12 @@
     @include('frontend.component.slider')
 @endsection
 @section('about')
-    @include('frontend.component.about')
+    <div class="mt-5">
+        @include('frontend.component.about')
+    </div>
 @endsection
 @section('content')
-    <section id="products" class="py-2">
+    <section id="products" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4 text-uppercase fw-bold">{{ __('translation.menu.product') }}</h2>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -76,12 +78,12 @@
 
     <section id="contact" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-4">Liên Hệ Với Chúng Tôi</h2>
+            <h2 class="text-center mb-4">{{ __('translation.contact.us') }}</h2>
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <p class="lead">Để được tư vấn chi tiết về sản phẩm và dịch vụ thi công phào chỉ hoa văn cho biệt thự của bạn, vui lòng liên hệ với chúng tôi qua số điện thoại hoặc email dưới đây:</p>
-                    <p class="text-align-left"><strong>Điện thoại:</strong> 0968 658 067</p>
-                    <p><strong>Email:</strong> <a href="mailto:">email</a></p>
+                    <p class="lead">{{ getSetting('contact_description') }}</p>
+                    <p class="text-align-left"><strong>Điện thoại:</strong> <a style="text-decoration: none" href="tel:{{ getSetting('contact_phone') }}">{{ getSetting('contact_phone') }}</a></p>
+                    <p><strong>Email:</strong> <a style="text-decoration: none" href="mailto:{{ getSetting('contact_email') }}">{{ getSetting('contact_email') }}</a></p>
                 </div>
             </div>
         </div>

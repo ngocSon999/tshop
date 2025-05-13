@@ -1,22 +1,17 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\AboutRepository;
-use App\Http\Services\Impl\AboutServiceInterface;
+use App\Http\Repositories\SliderRepository;
+use App\Http\Services\Impl\SliderServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
 
-class AboutService extends BaseService implements AboutServiceInterface
+class SliderService extends BaseService implements SliderServiceInterface
 {
     use StorageImage;
     public function repository(): string
     {
-        return AboutRepository::class;
-    }
-
-    public function getOne()
-    {
-        return $this->repository->getOne();
+        return SliderRepository::class;
     }
 
     /**
@@ -47,8 +42,10 @@ class AboutService extends BaseService implements AboutServiceInterface
     public function formatData(array $data): array
     {
         $input = [
-            'message' => $data['message'] ?? '',
-            'image' => '',
+            'name' => $data['name'] ?? null,
+            'title' => $data['title'] ?? null,
+            'link' => $data['link'] ?? null,
+            'image' => null,
         ];
 
         $image = $data['image'] ?? [];

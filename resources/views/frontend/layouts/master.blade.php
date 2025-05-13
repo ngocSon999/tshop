@@ -13,7 +13,6 @@
         /* CSS Slider */
         #home-slider {
             overflow: hidden;
-            margin-top: 111px;
         }
 
         .carousel-inner {
@@ -126,7 +125,7 @@
 </head>
 <body>
 @include('frontend.layouts.header')
-<div style="margin-top: 120px">
+<div style="margin-top: 109px;">
     @yield('slider')
     @yield('about')
     @yield('content')

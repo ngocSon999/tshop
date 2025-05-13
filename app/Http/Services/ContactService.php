@@ -46,9 +46,10 @@ class ContactService extends BaseService implements ContactServiceInterface
     }
 
     /**
+     * @param array $data
      * @throws Exception
      */
-    public function updateStatus($data): void
+    public function updateStatus(array $data)
     {
         $id = $data['id'] ?? null;
         if (empty($id)) {
@@ -62,6 +63,6 @@ class ContactService extends BaseService implements ContactServiceInterface
             'status' => (int) $data['status'] ?? 0,
         ];
 
-        $this->repository->update($input, (int) $id);
+        return $this->repository->update($input, (int) $id);
     }
 }

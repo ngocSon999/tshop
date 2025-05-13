@@ -57,10 +57,15 @@ body {
     padding-left: 20px;
     margin-bottom: 0;
     display: none;
-    background-color: rgba(0, 0, 0, 0.2);
 }
 .sidebar .submenu.show {
     display: block;
+}
+.sidebar .submenu.show li a {
+    color: black;
+}
+.sidebar .submenu.show li a:hover {
+    color: dodgerblue;
 }
 .content {
     margin-left: 250px;
