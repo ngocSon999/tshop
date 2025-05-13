@@ -96,6 +96,32 @@
         .carousel-indicators .active {
             opacity: 1;
         }
+        .modal.show .modal-dialog {
+            transform: translateY(50%);
+        }
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        .alert-timer-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: rgba(0, 0, 0, 0.2);
+            animation: timer-bar-animation 5s linear forwards;
+        }
+        @keyframes timer-bar-animation {
+            from { width: 100%; }
+            to { width: 0 }
+        }
+
+        .alert.fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
     </style>
 </head>
 <body>
@@ -106,11 +132,25 @@
     @yield('content')
 </div>
 @include('frontend.layouts.footer')
+@include('frontend.modal.message')
+
 <div id="imageModal" class="modal">
     <span class="close-button">&times;</span>
     <img class="modal-content" id="fullScreenImage" />
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            document.querySelectorAll('.auto-dismiss-alert').forEach(function (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('fade-out');
+                setTimeout(() => alert.remove(), 500);
+            });
+        }, 4000);
+    });
+</script>
 <script src="{{ asset('/access/frontend/js/script.js') }}"></script>
 </body>
 </html>

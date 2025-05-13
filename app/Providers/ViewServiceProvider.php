@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Services\Impl\AboutServiceInterface;
 use App\Http\Services\Impl\CategoryServiceInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -33,8 +34,13 @@ class ViewServiceProvider extends ServiceProvider
                 foreach ($controllers as $controller) {
                     if (str_starts_with($currentAction, $controller)) {
                         $categoryService = app(CategoryServiceInterface::class);
+                        $aboutService = app(AboutServiceInterface::class);
                         $categories = $categoryService->findAll();
-                        $view->with('categories', $categories);
+                        $about = $aboutService->getOne();
+                        $view->with([
+                            'categories' => $categories,
+                            'about' => $about,
+                        ]);
                         break;
                     }
                 }

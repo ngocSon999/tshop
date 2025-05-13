@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\UserController;
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'index'])->name('web.index');
 Route::get('/about', [PageController::class, 'about'])->name('web.about');
 Route::get('/contact', [PageController::class, 'contact'])->name('web.contact');
-Route::post('/contact', [PageController::class, 'postContact'])->name('web.post_contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('web.post_contact');
 Route::get('/category/{id}', [PageController::class, 'productByCategory'])->name('web.category');
 Route::get('/product/{id}', [PageController::class, 'productDetail'])->name('web.product_detail');
 
@@ -56,5 +58,27 @@ Route::prefix('admin')->middleware([CheckUserLogin::class])->name('admin.')->gro
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ProductController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/about')->name('about.')->group(function () {
+        Route::get('/', [AboutController::class, 'index'])->name('index');
+        Route::get('/list', [AboutController::class, 'list'])->name('list');
+        Route::get('/create', [AboutController::class, 'create'])->name('create');
+        Route::post('/store', [AboutController::class, 'store'])->name('store');
+        Route::get('/show/{id}', [AboutController::class, 'show'])->name('show');
+        Route::get('/edit/{id}', [AboutController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [AboutController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [AboutController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/contact')->name('contact.')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('index');
+        Route::get('/list', [ContactController::class, 'list'])->name('list');
+        Route::get('/create', [ContactController::class, 'create'])->name('create');
+        Route::post('/update-status', [ContactController::class, 'updateStatus'])->name('update_status');
+        Route::get('/show/{id}', [ContactController::class, 'show'])->name('show');
+        Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [ContactController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [ContactController::class, 'delete'])->name('delete');
     });
 });
