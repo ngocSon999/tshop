@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $product->name }}</h5>
                                 <p class="card-text">{{ $product->title }}</p>
-                                <a href="{{ route('web.product_detail', $product->id) }}" class="btn btn-outline-primary btn-sm">Xem Chi Tiết</a>
+                                <a href="{{ route('web.product_detail', $product->id) }}" class="btn btn-outline-primary btn-sm">{{ __('translation.menu.view') }}</a>
                             </div>
                         </div>
                     </div>
