@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [PageController::class, 'index'])->name('web.index');
+Route::get('/about', [PageController::class, 'about'])->name('web.about');
+Route::get('/contact', [PageController::class, 'contact'])->name('web.contact');
+Route::post('/contact', [PageController::class, 'postContact'])->name('web.post_contact');
+Route::get('/category/{id}', [PageController::class, 'productByCategory'])->name('web.category');
+Route::get('/product/{id}', [PageController::class, 'productDetail'])->name('web.product_detail');
 
 Route::get('/admin/login', [AuthController::class, 'getLogin'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'Login'])->name('admin.post_login');

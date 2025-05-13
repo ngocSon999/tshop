@@ -31,8 +31,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lead {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 300;
+    text-align: justify;
 }
 
 /* Header Styles */
@@ -41,10 +42,6 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid #eee;
 }
 
-.py-1 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-}
 
 .navbar {
     padding-top: 0.25rem;
@@ -85,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
 }
 .card-body {
-    height: 112px;
+    height: 150px;
 }
 @media (max-width: 768px) {
     .card-body {
@@ -142,11 +139,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Products Section */
 #products {
-    padding: 80px 0;
+    padding: 10px 0;
 }
 
 #products h2 {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .card.shadow-sm {
     overflow: hidden;
@@ -176,15 +173,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-/* Projects Section */
-#projects {
-    padding: 80px 0;
-}
-
-#projects h2 {
-    margin-bottom: 40px;
-}
-
 .btn-outline-secondary {
     color: #6c757d;
     border-color: #6c757d;
@@ -196,14 +184,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-/* Contact Section */
-#contact {
-    padding: 80px 0;
-}
-
-#contact h2 {
-    margin-bottom: 40px;
-}
 
 /* Footer Styles */
 .bg-dark {

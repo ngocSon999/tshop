@@ -11,4 +11,6 @@ interface BaseRepoInterface
     public function delete(int $id);
     public function findById(int $id);
     public function findAll();
+
+    public function paginate($perPage = 12);
 }

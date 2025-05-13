@@ -36,6 +36,9 @@ return [
         'updatedAt' => 'Ngày cập nhật',
         'status' => 'Trạng thái',
         'image' => 'Hình ảnh',
+        'home' => 'Trang chủ',
+        'about' => 'Giới thiệu',
+        'contact' => 'Liên hệ',
     ],
     'confirm' => [
         'delete' => 'Bạn có chắc chắn muốn xóa mục này không?',
@@ -57,4 +60,11 @@ return [
         'quantity' => 'Số lượng',
         'image' => 'Hình ảnh',
     ],
+    'web' => [
+        'home' => 'Trang chủ',
+        'about' => 'Giới thiệu',
+        'contact' => 'Liên hệ',
+        'product' => 'Sản phẩm',
+        'category' => 'Danh mục',
+    ]
 ];

@@ -75,4 +75,9 @@ class ProductService extends BaseService implements ProductServiceInterface
 
         return [$input, $imagePaths];
     }
+
+    public function findByCategory($id)
+    {
+        return $this->repository->findByCategory($id);
+    }
 }

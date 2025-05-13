@@ -56,4 +56,9 @@ abstract class BaseService implements BaseServiceInterface
     {
         return $this->repository->findById($id);
     }
+
+    public function paginate($perPage = 10)
+    {
+        return $this->repository->paginate($perPage);
+    }
 }

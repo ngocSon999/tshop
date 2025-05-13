@@ -57,4 +57,9 @@ class ProductRepository extends BaseRepository implements ProductRepoInterface
             'recordsFiltered' => $recordsTotal
         ];
     }
+
+    public function findByCategory($id)
+    {
+        return $this->model()::where('category_id', $id)->with('images')->get();
+    }
 }

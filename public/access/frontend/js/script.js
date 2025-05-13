@@ -1,7 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('#navbarNav .nav-link');
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('#navbarNav .nav-link, #navbarNav .dropdown-item');
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('#navbarNav');
+    const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link');
+
     let isNavbarOpen = false;
 
     navbarCollapse.addEventListener('show.bs.collapse', () => {
@@ -13,15 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function (e) {
             const isMdOrLess = window.innerWidth <= 768;
+
+            // Không đóng nếu là dropdown toggle
+            if (link === dropdownToggle) {
+                return;
+            }
+
             if (isNavbarOpen && isMdOrLess) {
                 navbarToggler.click();
             }
         });
     });
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const isMdOrLess = window.innerWidth <= 768;
         const targetElement = event.target;
 
@@ -34,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 let modal = document.getElementById("imageModal");
 let modalTriggers = document.querySelectorAll("body img[src]");
 let modalImage = document.getElementById("fullScreenImage");

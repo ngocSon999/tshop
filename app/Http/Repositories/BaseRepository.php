@@ -67,4 +67,9 @@ abstract class BaseRepository implements BaseRepoInterface
     {
         return $this->model->all();
     }
+
+    public function paginate($perPage = 12)
+    {
+        return $this->model->paginate($perPage);
+    }
 }

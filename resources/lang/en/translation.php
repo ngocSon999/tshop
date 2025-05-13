@@ -36,6 +36,9 @@ return [
         'updatedAt' => 'Updated At',
         'status' => 'Status',
         'image' => 'Image',
+        'home' => 'Home',
+        'about' => 'About',
+        'contact' => 'Contact',
     ],
     'confirm' => [
         'delete' => 'Are you sure you want to delete this item?',
@@ -57,4 +60,11 @@ return [
         'quantity' => 'Quantity',
         'image' => 'Image',
     ],
+    'web' => [
+        'home' => 'Home',
+        'about' => 'About',
+        'contact' => 'Contact',
+        'product' => 'Product',
+        'category' => 'Category',
+    ]
 ];
