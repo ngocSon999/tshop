@@ -78,12 +78,9 @@
 
     <section id="contact" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-4">{{ __('translation.contact.us') }}</h2>
             <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <p class="lead">{{ getSetting('contact_description') }}</p>
-                    <p class="text-align-left"><strong>Điện thoại:</strong> <a style="text-decoration: none" href="tel:{{ getSetting('contact_phone') }}">{{ getSetting('contact_phone') }}</a></p>
-                    <p><strong>Email:</strong> <a style="text-decoration: none" href="mailto:{{ getSetting('contact_email') }}">{{ getSetting('contact_email') }}</a></p>
+                <div class="col-md-8">
+                    @include('frontend.component.contact')
                 </div>
             </div>
         </div>

@@ -39,14 +39,7 @@
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <h2 class="text-center mb-4">Liên Hệ Với Chúng Tôi</h2>
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 text-center">
-                            <p class="lead">Để được tư vấn chi tiết về sản phẩm và dịch vụ thi công phào chỉ, hoa văn cho biệt thự của bạn, vui lòng liên hệ với chúng tôi qua số điện thoại, email hoặc để lại thông tin của bạn chúng tôi sẽ liên hệ hỗ trợ trong thời gian sớm nhất.</p>
-                            <p class="m-0 d-flex justify-content-start text-align-left"><strong>Điện thoại:</strong> 0968 658 067</p>
-                            <p class="m-0 d-flex justify-content-start text-align-left"><strong>Email:</strong> <a href="mailto:">email</a></p>
-                        </div>
-                    </div>
+                    @include('frontend.component.contact')
                 </div>
             </div>
         </div>
