@@ -23,9 +23,11 @@ class CategoryService extends BaseService implements CategoryServiceInterface
     public function update($data, $id): void
     {
         $data = $this->formatData($data);
-        $category = $this->repository->findById($id);
-        if ($category->image) {
-            $this->deleteImage($category->image);
+        if (isset($data['image'])) {
+            $category = $this->repository->findById($id);
+            if ($category->image) {
+                $this->deleteImage($category->image);
+            }
         }
 
         $this->repository->update($data, (int) $id);

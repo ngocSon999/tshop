@@ -29,9 +29,11 @@ class SliderService extends BaseService implements SliderServiceInterface
     public function update(array $data, $id): void
     {
         $data = $this->formatData($data);
-        $about = $this->repository->findById($id);
-        if ($about->image) {
-            $this->deleteImage($about->image);
+        if (isset($data['image'])) {
+            $slider = $this->repository->findById($id);
+            if ($slider->image) {
+                $this->deleteImage($slider->image);
+            }
         }
         $this->repository->update($data, (int) $id);
     }
@@ -45,14 +47,11 @@ class SliderService extends BaseService implements SliderServiceInterface
             'name' => $data['name'] ?? null,
             'title' => $data['title'] ?? null,
             'link' => $data['link'] ?? null,
-            'image' => null,
         ];
 
         $image = $data['image'] ?? [];
         if (!empty($image)) {
             $imagePath = $this->storageImage($image, 'sliders');
-        }
-        if (!empty($imagePath)) {
             $input['image'] = $imagePath;
         }
 

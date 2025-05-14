@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('/access/frontend/css/style.css') }}">
     <link rel="shortcut icon" href="{{ asset(getSetting('logo')) }}" type="image/x-icon">
+    @yield('style')
     <style>
         /* CSS Slider */
         #home-slider {
@@ -124,6 +125,13 @@
         }
         #languageDropdown::after {
             display: none !important;
+        }
+        .clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     </style>
 </head>

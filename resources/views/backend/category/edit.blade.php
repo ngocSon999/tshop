@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="form-group col-md-6 col-12">
                     <label class="form-label" for="image">{{ __('translation.menu.image') }}</label>
-                    <input type="file" class="form-control" id="phone" name="image" value="{{ old('image') }}">
+                    <input type="file" class="form-control" id="phone" name="image">
                     @error('image')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

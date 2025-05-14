@@ -10,6 +10,7 @@ return [
         'delete_category' => 'Delete Category',
         'category_name' => 'Category Name',
         'category_description' => 'Category Description',
+        'portfolio' => 'Portfolio',
     ],
     'menu' => [
         'list' => 'List',

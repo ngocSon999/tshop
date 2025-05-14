@@ -10,6 +10,7 @@ return [
         'delete_category' => 'Xóa danh mục',
         'category_name' => 'Tên danh mục',
         'category_description' => 'Mô tả danh mục',
+        'portfolio' => 'Danh mục đầu tư',
     ],
     'menu' => [
         'list' => 'Danh sách',
