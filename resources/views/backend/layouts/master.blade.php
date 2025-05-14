@@ -79,8 +79,8 @@
                         <i class="bi bi-globe me-2"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-                        <li><a class="dropdown-item" href="{{ route('admin.change_language', $locale = 'vi') }}">Tiếng Việt</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.change_language', $locale = 'en') }}">Tiếng Anh</a></li>
+                        <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'vi') }}">Tiếng Việt</a></li>
+                        <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'en') }}">Tiếng Anh</a></li>
                     </ul>
                 </div>
                 <div>

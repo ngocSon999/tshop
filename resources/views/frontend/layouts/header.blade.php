@@ -44,8 +44,8 @@
                                     <i class="bi bi-globe"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="border: none" aria-labelledby="languageDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'vi') }}">Tiếng Việt</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'en') }}">Tiếng Anh</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'vi') }}">{{ __('translation.language.vi') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'en') }}">{{ __('translation.language.en') }}</a></li>
                                 </ul>
                             </li>
                         </ul>

@@ -106,5 +106,9 @@ return [
         'key' => 'Khóa',
         'value' => 'Giá trị',
         'copyright' => '© :year tShop. Đã đăng ký bản quyền.',
-    ]
+    ],
+    'language' => [
+        'en' => 'Tiếng Anh',
+        'vi' => 'Tiếng Việt',
+    ],
 ];

@@ -106,5 +106,9 @@ return [
         'key' => 'Key',
         'value' => 'Value',
         'copyright' => '© :year tShop. All Rights Reserved.',
-    ]
+    ],
+    'language' => [
+        'en' => 'English',
+        'vi' => 'Vietnamese',
+    ],
 ];
