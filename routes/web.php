@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'index'])->name('web.index');
 Route::get('/about', [PageController::class, 'about'])->name('web.about');
 Route::get('/contact', [PageController::class, 'contact'])->name('web.contact');
-Route::post('/contact', [ContactController::class, 'store'])->name('web.post_contact');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:1,1')->name('web.post_contact');
 Route::get('/category/{id}', [PageController::class, 'productByCategory'])->name('web.category');
 Route::get('/product/{id}', [PageController::class, 'productDetail'])->name('web.product_detail');
 

@@ -45,6 +45,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        if (!empty($request->honeypot)) {
+            abort(403, 'Bot detected.');
+        }
+
         DB::beginTransaction();
         try {
             $this->contactService->create($request->all());

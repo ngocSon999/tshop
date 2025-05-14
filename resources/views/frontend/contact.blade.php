@@ -7,6 +7,7 @@
                 <div class="col-md-6">
                     <form action="{{ route('web.post_contact') }}" method="POST">
                         @csrf
+                        <input type="text" name="honeypot" style="display:none">
                         <div class="mb-3">
                             <label for="name" class="form-label">Họ và tên <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="name" name="name" required>
