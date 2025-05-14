@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tShop - @yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('/access/frontend/css/style.css') }}">
     <link rel="shortcut icon" href="{{ asset(getSetting('logo')) }}" type="image/x-icon">
     <style>
@@ -120,6 +121,9 @@
         .alert.fade-out {
             opacity: 0;
             transition: opacity 0.5s ease;
+        }
+        #languageDropdown::after {
+            display: none !important;
         }
     </style>
 </head>

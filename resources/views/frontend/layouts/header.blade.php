@@ -38,6 +38,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('web.contact') }}">{{ __('translation.web.contact') }}</a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-globe"></i>
+                                </a>
+                                <ul class="dropdown-menu" style="border: none" aria-labelledby="languageDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'vi') }}">Tiếng Việt</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('change_language', $locale = 'en') }}">Tiếng Anh</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </nav>

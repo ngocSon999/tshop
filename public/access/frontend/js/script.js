@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const isMdOrLess = window.innerWidth <= 768;
 
             // Không đóng nếu là dropdown toggle
-            if (link === dropdownToggle) {
+            if (link.getAttribute('data-bs-toggle') === 'dropdown') {
                 return;
             }
 

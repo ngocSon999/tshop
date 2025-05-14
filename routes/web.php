@@ -23,11 +23,11 @@ Route::get('/product/{id}', [PageController::class, 'productDetail'])->name('web
 
 Route::get('/admin/login', [AuthController::class, 'getLogin'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'Login'])->name('admin.post_login');
+Route::get('/set-language/{locale}', [DashboardController::class, 'changeLanguage'])->name('change_language');
 
 Route::prefix('admin')->middleware([CheckUserLogin::class])->name('admin.')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('index');
-    Route::get('/set-language/{locale}', [DashboardController::class, 'changeLanguage'])->name('change_language');
 
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
