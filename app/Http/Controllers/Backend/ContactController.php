@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Impl\ContactServiceInterface;
+use App\Trait\StorageImage;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
 {
+    use StorageImage;
     protected ContactServiceInterface $contactService;
 
     public function __construct(ContactServiceInterface $contactService)
@@ -64,16 +67,6 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return view('backend.contact.edit', [
-            'contact' => $this->contactService->findById($id),
-        ]);
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
@@ -113,8 +106,49 @@ class ContactController extends Controller
      */
     public function updateStatus(Request $request): JsonResponse
     {
-        $data = $this->contactService->updateStatus($request->all());
+        $this->contactService->updateStatus($request->all());
 
-        return response()->json($data);
+        return response()->json([
+            'code' => 200,
+            'message' => 'Update status successfully',
+        ]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function sendMail(Request $request): JsonResponse
+    {
+        $attachments = $request->file('file');
+//        $paths = [];
+//        if ($attachments && is_array($attachments)) {
+//            $paths = $this->storageImages($attachments, 'attachments');
+//        }
+        $structuredAttachments = array_map(function ($attachment) {
+            return [
+                'file' => $attachment,
+                'options' => [
+                    'as' => 'file_' . time() . '.' . $attachment->getClientOriginalExtension(),
+                    'mime' => $attachment->getClientMimeType(),
+                ],
+            ];
+        }, $attachments);
+
+        try {
+            $this->contactService->sendMail([
+                'email' => $request->get('email'),
+                'content' => $request->get('content'),
+            ], $structuredAttachments);
+
+            return response()->json([
+                'code' => 200,
+                'message' => 'Send mail successfully',
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'code' => 500,
+                'message' => 'Send mail failed: ' . $e->getMessage(),
+            ]);
+        }
     }
 }

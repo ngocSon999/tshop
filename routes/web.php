@@ -78,8 +78,8 @@ Route::prefix('admin')->middleware([CheckUserLogin::class])->name('admin.')->gro
         Route::get('/list', [ContactController::class, 'list'])->name('list');
         Route::get('/create', [ContactController::class, 'create'])->name('create');
         Route::post('/update-status', [ContactController::class, 'updateStatus'])->name('update_status');
+        Route::post('/send-mail', [ContactController::class, 'sendMail'])->name('send_mail');
         Route::get('/show/{id}', [ContactController::class, 'show'])->name('show');
-        Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ContactController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [ContactController::class, 'delete'])->name('delete');
     });
@@ -99,7 +99,7 @@ Route::prefix('admin')->middleware([CheckUserLogin::class])->name('admin.')->gro
         Route::get('/', [SettingController::class, 'index'])->name('index');
         Route::get('/list', [SettingController::class, 'list'])->name('list');
         Route::get('/show/{id}', [SettingController::class, 'show'])->name('show');
-        Route::put('/update/{id}', [SettingController::class, 'update'])->name('update');
+        Route::post('/update/{id}', [SettingController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [SettingController::class, 'delete'])->name('delete');
     });
 });

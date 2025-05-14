@@ -79,6 +79,15 @@ return [
         'status_1' => 'Đã xem',
         'status_2' => 'Đã trả lời',
         'us' => 'Liên hệ với chúng tôi',
+        'sendMail' => 'Gửi email',
+    ],
+    'sendMail' => [
+        'subject' => 'Phản hồi từ tShop',
+        'content' => 'Nội dung',
+        'send' => 'Gửi',
+        'cancel' => 'Hủy',
+        'to' => 'Gửi đến',
+        'file' => 'Tệp đính kèm',
     ],
     'web' => [
         'home' => 'Trang chủ',

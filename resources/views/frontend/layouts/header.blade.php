@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-md-4">
                 <h1 class="mb-0 d-flex align-items-center header-logo">
-                    <img src="{{ asset('access/frontend/images/logo_2.jpg') }}" alt="Logo BOM-THANG" class="img-fluid" style="max-height: 100px;">
+                    <img src="{{ asset(getSetting('logo')) }}" alt="Logo" class="img-fluid" style="max-height: 100px;">
                     <strong style="color: #d4d09d; padding-left: 6px; text-transform: uppercase; font-family: 'Arial', sans-serif">tshop</strong>
                 </h1>
             </div>

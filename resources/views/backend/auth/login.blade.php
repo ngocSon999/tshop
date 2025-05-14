@@ -43,7 +43,7 @@
             </form>
         </div>
         <div class="col-12 col-lg-6">
-            <img src="{{ asset('/access/frontend/images/logo_1.png') }}" alt="login" class="img-fluid">
+            <img src="{{ asset(getSetting('logo')) }}" alt="login" class="img-fluid">
         </div>
     </div>
 </div>

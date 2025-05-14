@@ -79,6 +79,15 @@ return [
         'status_1' => 'Read',
         'status_2' => 'Replied',
         'us' => 'Contact Us',
+        'sendMail' => 'Send Mail',
+    ],
+    'sendMail' => [
+        'subject' => 'Reply from tShop',
+        'content' => 'Content',
+        'send' => 'Send',
+        'cancel' => 'Cancel',
+        'to' => 'Send To',
+        'file' => 'File',
     ],
     'web' => [
         'home' => 'Home',

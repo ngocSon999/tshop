@@ -8,7 +8,7 @@
     <title>tShop - @yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/access/frontend/css/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('/access/frontend/images/logo_2.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset(getSetting('logo')) }}" type="image/x-icon">
     <style>
         /* CSS Slider */
         #home-slider {

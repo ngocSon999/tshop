@@ -5,6 +5,7 @@ use App\Http\Repositories\SettingRepository;
 use App\Http\Services\Impl\SettingServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
+use Illuminate\Http\UploadedFile;
 
 class SettingService extends BaseService implements SettingServiceInterface
 {
@@ -28,27 +29,24 @@ class SettingService extends BaseService implements SettingServiceInterface
      */
     public function update(array $data, $id): void
     {
+        $setting = $this->repository->findById($id);
+        foreach ($data as $key => $value) {
+            if ($key === 'logo'  && $value instanceof UploadedFile) {
+                $data = [
+                    $key => $key,
+                    'value' => $this->storageImage($value, 'settings')
+                ];
+                if ($setting->value) {
+                    $this->deleteImage($setting->value);
+                }
+            } else {
+                $data = [
+                    $key => $key,
+                    'value' => $value
+                ];
+            }
+        }
+
         $this->repository->update($data, (int) $id);
-    }
-
-    /**
-     * @throws Exception
-     */
-    public function formatData(array $data): array
-    {
-        $input = [
-            'message' => $data['message'] ?? '',
-            'image' => '',
-        ];
-
-        $image = $data['image'] ?? [];
-        if (!empty($image)) {
-            $imagePath = $this->storageImage($image, 'sliders');
-        }
-        if (!empty($imagePath)) {
-            $input['image'] = $imagePath;
-        }
-
-        return $input;
     }
 }

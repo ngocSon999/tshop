@@ -3,8 +3,14 @@
 namespace App\Http\Services;
 use App\Http\Repositories\ContactRepository;
 use App\Http\Services\Impl\ContactServiceInterface;
+use App\Jobs\SendMail;
+use App\Mail\ContactMail;
 use App\Trait\StorageImage;
 use Exception;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ContactService extends BaseService implements ContactServiceInterface
 {
@@ -64,5 +70,26 @@ class ContactService extends BaseService implements ContactServiceInterface
         ];
 
         return $this->repository->update($input, (int) $id);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function sendMail(array $data, array $attachments = []): void
+    {
+        try {
+            if (!empty($data['email'])) {
+                $email = $data['email'];
+                $content = $data['content'];
+                $locale = Session::get('locale') ?? App::getLocale();
+
+                Mail::to($email)->send(new ContactMail($content, $attachments));
+//                SendMail::dispatch($email, $content, $attachments, $locale);
+            } else {
+                throw new Exception('Email is required');
+            }
+        } catch (Exception $e) {
+            throw new Exception('Error sending email: ' . $e->getMessage());
+        }
     }
 }

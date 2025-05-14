@@ -19,6 +19,7 @@
         <tbody>
         </tbody>
     </table>
+    @include('backend.modal.confirm_contact')
 @endsection
 @section('js')
     <script>
@@ -75,7 +76,7 @@
                         else if (colValue === 2) bgClass = 'bg-success text-white';
 
                         return `
-                                <select style="min-width: 105px" class="form-select form-select-sm status-select ${bgClass}" data-id="${row.id}">
+                                <select ${colValue === 2 ? 'disabled' : ''} style="min-width: 105px" class="form-select form-select-sm status-select ${bgClass}" data-id="${row.id}">
                                     <option value="0" ${colValue === 0 ? 'selected' : ''}>{{ __('translation.contact.status_0') }}</option>
                                     <option value="1" ${colValue === 1 ? 'selected' : ''}>{{ __('translation.contact.status_1') }}</option>
                                     <option value="2" ${colValue === 2 ? 'selected' : ''}>{{ __('translation.contact.status_2') }}</option>
@@ -90,15 +91,14 @@
                 },
                 {
                     data: 'id', orderable: false,
-                    render: function (colValue) {
-                        let urlAddCoin = '{{ route('admin.contact.edit', ':id') }}';
-                        urlAddCoin = urlAddCoin.replace(':id', colValue);
+                    render: function (colValue, type, row) {
+                        let urlSendMail = '{{ route('admin.contact.send_mail') }}';
 
                         let urlDelete = '{{ route('admin.contact.delete', ':id') }}';
                         urlDelete = urlDelete.replace(':id', colValue);
 
                         return `<div class="d-flex align-items-center justify-content-center w-100">
-                                        <a type=button class="btn btn-danger btn-sm" href="${urlAddCoin}" title="{{ __('translation.menu.edit') }}">{{ __('translation.menu.edit') }}</a>
+                                        <a data-contact_mail="${row.email}" data-id="${row.id}" style="min-width: 82px" class="btn btn-danger btn-sm btn-send-mail" href="${urlSendMail}" title="{{ __('translation.contact.sendMail') }}">{{ __('translation.contact.sendMail') }}</a>
                                         <a data-title="{{ __('translation.confirm.delete') }}" title="{{ __('translation.menu.delete') }}" href="${urlDelete}" class="btn btn-info btn-sm ms-1 btn-delete">
                                             {{ __('translation.menu.delete') }}
                                         </a>
@@ -120,16 +120,53 @@
                     status: newStatus,
                     _token: '{{ csrf_token() }}'
                 },
-                success: function (res) {
-                    // Ví dụ: reload lại datatable hoặc hiện thông báo
-                    // toastr.success('Cập nhật trạng thái thành công!');
-                    table.draw()
+                success: function (response) {
+                    if (response.code === 200) {
+                        table.ajax.reload();
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
                 },
                 error: function (xhr) {
-                    // toastr.error('Cập nhật thất bại!');
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
 
+        table.on('click', '.btn-send-mail', function (e) {
+            e.preventDefault();
+            const url = $(this).attr('href');
+            const email = $(this).data('contact_mail');
+            $('#modal-confirm-contact').modal('show');
+            $('#modal-confirm-contact .text-title').text(`{{ __('translation.sendMail.to') }}: ${email}`);
+            $('#modal-confirm-contact #email').val(email);
+            $('#form-send-mail').attr('action', url);
+        });
+        $('#modal-confirm-contact').on('submit', '#form-send-mail', function (e) {
+            e.preventDefault();
+            let form = $('#form-send-mail')[0];
+            let formData = new FormData(form);
+            $.ajax({
+                url: '{{ route('admin.contact.send_mail') }}',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.code === 200) {
+                        toastr.success(response.message);
+                        $('#modal-confirm-contact form')[0].reset();
+                        $('#modal-confirm-contact').modal('hide');
+                        table.ajax.reload();
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function (xhr) {
+                    toastr.error(xhr.responseJSON.message);
+                }
+            });
+        });
     </script>
 @endsection

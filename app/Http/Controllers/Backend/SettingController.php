@@ -44,8 +44,10 @@ class SettingController extends Controller
         DB::beginTransaction();
         try {
             $data = $request->except('_token', '_method');
-            $this->settingService->update($data, $id);
-            DB::commit();
+            if (!empty($data)) {
+                $this->settingService->update($data, $id);
+                DB::commit();
+            }
 
             Session::flash('success', 'Setting updated successfully.');
 

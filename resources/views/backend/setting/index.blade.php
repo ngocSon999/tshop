@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 @section('style')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 @endsection
 @section('content')
     <div class="d-flex justify-content-between">
@@ -21,7 +20,6 @@
     </table>
 @endsection
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         $.fn.dataTable.ext.errMode = 'throw';
         let table = $('#table').DataTable({
@@ -49,8 +47,13 @@
                 {data: 'key'},
                 {
                     data: 'value',
-                    render: function (colValue) {
-                        return `<input type="text" class="form-control" value="${colValue}">`;
+                    render: function (colValue, type, row) {
+                        if(row.key !== 'logo') {
+                            return `<input type="text" name="${row.key}" class="form-control" value="${row.value}">`;
+                        } else {
+                            return `<img src="${row.value}" alt="Logo" style="width: 50px; height: 50px;">
+                                    <input type="file" class="form-control" name="${row.key}">`;
+                        }
                     }
                 },
                 {
@@ -82,16 +85,32 @@
         $(document).on('click', '.btn-update', function (e) {
             e.preventDefault();
             let url = $(this).attr('href');
-            let value = $(this).closest('tr').find('input').val();
+            let tr = $(this).closest('tr');
+            let inputFile = tr.find('input[type="file"]');
+            let inputText = tr.find('input[type="text"]');
+
+            let formData = new FormData();
+            // Nếu có file input (logo)
+            if (inputFile.length > 0 && inputFile[0].files.length > 0) {
+                let name = inputFile.attr('name');
+                formData.append(name, inputFile[0].files[0]);
+            }
+
+            // Nếu có text input
+            if (inputText.length > 0) {
+                let name = inputText.attr('name');
+                formData.append(name, inputText.val());
+            }
+            console.log(formData);
             $.ajax({
-                type: "PUT",
+                type: "POST",
                 url: url,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                data: {
-                    value: value
-                },
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     if (response.code === 200) {
                         table.ajax.reload();
