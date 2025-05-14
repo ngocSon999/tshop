@@ -105,5 +105,6 @@ return [
     'setting' => [
         'key' => 'Key',
         'value' => 'Value',
+        'copyright' => '© :year tShop. All Rights Reserved.',
     ]
 ];

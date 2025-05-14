@@ -15,14 +15,14 @@ class SettingSeeder extends Seeder
     {
         $data = config('define.setting.contact');
         foreach ($data as $key => $value) {
-            DB::table('settings')->updateOrInsert(
-                ['key' => $key],
-                [
+            $setting = DB::table('settings')->where('key', $key)->first();
+            if (!$setting) {
+                DB::table('settings')->where('key', $key)->create([
                     'value' => '',
                     'created_at' => now(),
                     'updated_at' => now(),
-                ]
-            );
+                ]);
+            }
         }
     }
 }

@@ -105,5 +105,6 @@ return [
     'setting' => [
         'key' => 'Khóa',
         'value' => 'Giá trị',
+        'copyright' => '© :year tShop. Đã đăng ký bản quyền.',
     ]
 ];
