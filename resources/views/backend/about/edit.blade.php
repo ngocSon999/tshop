@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="form-group col-md-6 col-12">
                     <label class="form-label" for="message">{{ __('translation.about.message') }}</label>
-                    <input type="text" class="form-control" id="message" name="message" value="{{ old('message', $about->message) }}">
+                    <textarea class="form-control" name="message" id="message" rows="6">{{ old('message', $about->message) }}</textarea>
                     @error('message')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

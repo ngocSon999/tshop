@@ -15,7 +15,7 @@ class AboutRepository extends BaseRepository implements AboutRepoInterface
 
     public function getOne()
     {
-        return $this->model()::orderBy('created_at', 'desc')->first();
+        return $this->model()::orderBy('updated_at', 'desc')->first();
     }
 
     public function pagination(Request $request): array

@@ -34,9 +34,11 @@ class AboutService extends BaseService implements AboutServiceInterface
     public function update(array $data, $id): void
     {
         $data = $this->formatData($data);
-        $about = $this->repository->findById($id);
-        if ($about->image) {
-            $this->deleteImage($about->image);
+        if (isset($data['image'])) {
+            $about = $this->repository->findById($id);
+            if ($about->image) {
+                $this->deleteImage($about->image);
+            }
         }
         $this->repository->update($data, (int) $id);
     }
@@ -48,14 +50,11 @@ class AboutService extends BaseService implements AboutServiceInterface
     {
         $input = [
             'message' => $data['message'] ?? '',
-            'image' => '',
         ];
 
         $image = $data['image'] ?? [];
         if (!empty($image)) {
             $imagePath = $this->storageImage($image, 'sliders');
-        }
-        if (!empty($imagePath)) {
             $input['image'] = $imagePath;
         }
 

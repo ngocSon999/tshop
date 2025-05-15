@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item has-submenu">
                 <a class="nav-link" href="#sliderMenu" data-bs-toggle="collapse" aria-expanded="false">
-                    <i class="bi bi-pie-chart"></i>{{ __('translation.menu.slider') }}
+                    <i class="bi bi-sliders"></i>{{ __('translation.menu.slider') }}
                 </a>
                 <ul class="collapse submenu" id="sliderMenu">
                     <li><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="bi bi bi-card-list"></i>{{ __('translation.menu.list') }}</a></li>
@@ -53,7 +53,7 @@
                 </a>
                 <ul class="collapse submenu" id="settingMenu">
                     <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="bi bi bi-building"></i>{{ __('translation.menu.about') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="bi bi bi-building"></i>{{ __('translation.menu.setting') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="bi bi-gear"></i>{{ __('translation.menu.setting') }}</a></li>
                 </ul>
             </li>
 
@@ -69,7 +69,7 @@
             </li>
             <li class="nav-item mt-3">
                 <a class="nav-link" href="{{ route('admin.logout') }}">
-                    <i class="bi bi-chat-left-quote"></i>{{ __('translation.menu.logout') }}
+                    <i class="bi bi-box-arrow-right"></i>{{ __('translation.menu.logout') }}
                 </a>
             </li>
         </ul>

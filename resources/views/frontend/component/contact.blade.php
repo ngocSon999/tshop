@@ -1,4 +1,4 @@
-<h2 class="text-center mb-4">{{ __('translation.contact.us') }}</h2>
+<h2 class="text-center mb-2">{{ __('translation.contact.us') }}</h2>
 <div class="row justify-content-center">
     <div class="text-center">
         <p class="lead">{{ getSetting('contact_description') }}</p>
