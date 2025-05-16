@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
 </head>
 <body>
-<div class="container">
-    <div class="row">
+<div class="container" style="height: 100vh">
+    <div class="row h-100">
         <div class="col-lg-6 col-12 d-flex align-items-center">
             <form class="form-login w-100" action="{{ route('admin.post_login') }}" method="POST">
                 @csrf
@@ -43,7 +43,7 @@
             </form>
         </div>
         <div class="col-12 col-lg-6">
-            <img src="{{ asset(getSetting('logo')) }}" alt="login" class="img-fluid">
+            <img src="{{ asset(getSetting('logo')) }}" alt="login" class="img-fluid" style="height: 100%">
         </div>
     </div>
 </div>
