@@ -133,6 +133,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link,
+        a.dropdown-item.text-active {
+            color: var(--bs-primary);
+        }
     </style>
 </head>
 <body>

@@ -17,26 +17,26 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('web.index') }}">
+                                <a class="nav-link {{ request()->routeIs('web.index') ? 'active' : '' }}" aria-current="page" href="{{ route('web.index') }}">
                                     {{ __('translation.web.home') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('web.about') }}">{{ __('translation.web.about') }}</a>
+                                <a class="nav-link {{ request()->routeIs('web.about') ? 'active' : '' }}" href="{{ route('web.about') }}">{{ __('translation.web.about') }}</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle {{ request()->routeIs('web.category') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ __('translation.web.category') }}
                                 </a>
                                 <ul class="dropdown-menu" style="border: none" aria-labelledby="navbarDropdown">
                                     @foreach($categories as $category)
-                                        <li><a class="dropdown-item" href="{{ route('web.category', $category->id) }}">{{ $category->name }}</a></li>
+                                        <li><a class="dropdown-item  {{ request()->route('id') == $category->id ? 'text-active' : '' }}" href="{{ route('web.category', $category->id) }}">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('web.contact') }}">{{ __('translation.web.contact') }}</a>
+                                <a class="nav-link {{ request()->routeIs('web.contact') ? 'active' : '' }}" href="{{ route('web.contact') }}">{{ __('translation.web.contact') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
