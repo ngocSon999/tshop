@@ -17,7 +17,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('web.index') ? 'active' : '' }}" aria-current="page" href="{{ route('web.index') }}">
+                                <a class="nav-link {{ request()->routeIs('web.index') || request()->routeIs('web.product_detail')  ? 'active' : '' }}" aria-current="page" href="{{ route('web.index') }}">
                                     {{ __('translation.web.home') }}
                                 </a>
                             </li>
