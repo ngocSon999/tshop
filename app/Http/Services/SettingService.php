@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\SettingRepository;
+use App\Http\Repositories\Impl\SettingRepoInterface;
 use App\Http\Services\Impl\SettingServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
@@ -12,7 +12,7 @@ class SettingService extends BaseService implements SettingServiceInterface
     use StorageImage;
     public function repository(): string
     {
-        return SettingRepository::class;
+        return SettingRepoInterface::class;
     }
 
     /**

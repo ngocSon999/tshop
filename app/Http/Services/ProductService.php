@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\ProductRepository;
+use App\Http\Repositories\Impl\ProductRepoInterface;
 use App\Http\Services\Impl\ProductServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
@@ -11,7 +11,7 @@ class ProductService extends BaseService implements ProductServiceInterface
     use StorageImage;
     public function repository(): string
     {
-        return ProductRepository::class;
+        return ProductRepoInterface::class;
     }
 
     /**

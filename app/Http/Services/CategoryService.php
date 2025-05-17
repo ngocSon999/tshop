@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\CategoryRepository;
+use App\Http\Repositories\Impl\CategoryRepoInterface;
 use App\Http\Services\Impl\CategoryServiceInterface;
 use App\Trait\StorageImage;
 
@@ -11,7 +11,7 @@ class CategoryService extends BaseService implements CategoryServiceInterface
 
     public function repository(): string
     {
-        return CategoryRepository::class;
+        return CategoryRepoInterface::class;
     }
 
     public function create($data): void

@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 use App\Http\Repositories\AboutRepository;
+use App\Http\Repositories\Impl\AboutRepoInterface;
 use App\Http\Services\Impl\AboutServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
@@ -9,9 +10,10 @@ use Exception;
 class AboutService extends BaseService implements AboutServiceInterface
 {
     use StorageImage;
+
     public function repository(): string
     {
-        return AboutRepository::class;
+        return AboutRepoInterface::class;
     }
 
     public function getOne()

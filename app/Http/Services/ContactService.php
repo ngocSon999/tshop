@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\ContactRepository;
+use App\Http\Repositories\Impl\ContactRepoInterface;
 use App\Http\Services\Impl\ContactServiceInterface;
-use App\Jobs\SendMail;
 use App\Mail\ContactMail;
 use App\Trait\StorageImage;
 use Exception;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -17,7 +15,7 @@ class ContactService extends BaseService implements ContactServiceInterface
     use StorageImage;
     public function repository(): string
     {
-        return ContactRepository::class;
+        return ContactRepoInterface::class;
     }
 
     /**

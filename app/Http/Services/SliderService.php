@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\SliderRepository;
+use App\Http\Repositories\Impl\SliderRepoInterface;
 use App\Http\Services\Impl\SliderServiceInterface;
 use App\Trait\StorageImage;
 use Exception;
@@ -11,7 +11,7 @@ class SliderService extends BaseService implements SliderServiceInterface
     use StorageImage;
     public function repository(): string
     {
-        return SliderRepository::class;
+        return SliderRepoInterface::class;
     }
 
     /**
