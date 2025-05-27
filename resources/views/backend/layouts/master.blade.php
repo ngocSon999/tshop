@@ -88,7 +88,7 @@
                 </div>
                 <div  style="position: relative" class="btn-toolbar mb-2 mb-md-0">
                     <span class="count-contact" style="font-size: 12px; position: absolute; top: -2px; left: 10px; width: 14px; height: 14px; border-radius: 50%; background-color: red; color: #ffffff; line-height: 14px; text-align: center">{{ $countContact }}</span>
-                    <i class="bi bi-bell"></i>
+                    <a href="{{ route('admin.contact.index') }}"><i class="bi bi-bell"></i></a>
                 </div>
                 @yield('header')
             </div>
