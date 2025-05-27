@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Services\Impl\AboutServiceInterface;
 use App\Http\Services\Impl\CategoryServiceInterface;
+use App\Http\Services\Impl\ContactServiceInterface;
 use App\Http\Services\Impl\SliderServiceInterface;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -49,6 +51,13 @@ class ViewServiceProvider extends ServiceProvider
                         break;
                     }
                 }
+            }
+
+            // Chia sẻ biến $countContact cho admin nếu login và route admin
+            if (Auth::check() && str_contains($currentAction, 'Backend\\')) {
+                $contactService = app(ContactServiceInterface::class);
+                $countContact = $contactService->countUnread();
+                $view->with('countContact', $countContact);
             }
         });
     }

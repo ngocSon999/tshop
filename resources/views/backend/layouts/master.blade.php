@@ -86,14 +86,9 @@
                 <div>
                     <a target="_blank" style="text-decoration: none" href="/"><i class="bi bi-hdd-network"></i> Website</a>
                 </div>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Chia sẻ</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Xuất</button>
-                    </div>
-                    <button type="button" class="btn btn-sm btn-outline-primary">
-                        <i class="bi bi-calendar-plus"></i> Thêm mới
-                    </button>
+                <div  style="position: relative" class="btn-toolbar mb-2 mb-md-0">
+                    <span class="count-contact" style="font-size: 12px; position: absolute; top: -2px; left: 10px; width: 14px; height: 14px; border-radius: 50%; background-color: red; color: #ffffff; line-height: 14px; text-align: center">{{ $countContact }}</span>
+                    <i class="bi bi-bell"></i>
                 </div>
                 @yield('header')
             </div>
@@ -114,6 +109,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+
 
 <script src="{{ asset('/access/backend/js/script.js') }}"></script>
 
@@ -136,6 +134,25 @@
                 setTimeout(() => alert.remove(), 500);
             });
         }, 4000);
+    });
+
+    // Pusher.logToConsole = true;
+    // Enable Pusher logging for debugging
+    // Pusher.logToConsole = true;
+    const app_key = '{{ config('define.PUSHER_APP_KEY') }}';
+    let customerId = {{ auth()->id() }};
+
+    // create Pusher
+    let pusher = new Pusher(app_key, {
+        cluster: 'ap1',
+        encrypted: true
+    });
+
+    let channel = pusher.subscribe('Send-Contact');
+    channel.bind('ContactEvent', function(e) {
+        if (e.count > 0) {
+            $('.count-contact').text(e.count);
+        }
     });
 </script>
 </body>

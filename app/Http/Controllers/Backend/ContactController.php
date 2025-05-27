@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Events\ContactEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Impl\ContactServiceInterface;
 use App\Trait\StorageImage;
@@ -9,7 +10,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
@@ -48,10 +49,12 @@ class ContactController extends Controller
         if (!empty($request->honeypot)) {
             abort(403, 'Bot detected.');
         }
-
         DB::beginTransaction();
         try {
             $this->contactService->create($request->all());
+            $count = $this->contactService->countUnread();
+
+            event(new ContactEvent((int) $count));
             DB::commit();
 
             return redirect()->route('web.contact')->with('success', 'Contact created successfully.');
@@ -111,6 +114,9 @@ class ContactController extends Controller
     public function updateStatus(Request $request): JsonResponse
     {
         $this->contactService->updateStatus($request->all());
+        $count = $this->contactService->countUnread();
+
+        event(new ContactEvent((int) $count));
 
         return response()->json([
             'code' => 200,

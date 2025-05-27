@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'PUSHER_APP_KEY' => env('PUSHER_APP_KEY', 'your-pusher-app-key'),
     'setting' => [
         'contact' => [
             'contact_title' => 'Cài đặt liên hệ',

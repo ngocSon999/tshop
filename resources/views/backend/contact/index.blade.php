@@ -31,7 +31,7 @@
             "oLanguage": {
                 "sLengthMenu": "Display _MENU_ record",
             },
-
+            order: [[5, 'asc']],
             ajax: {
                 url: '{{ route('admin.contact.list') }}',
                 data: function (d) {

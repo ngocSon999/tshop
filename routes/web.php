@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\ContactEvent;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\CategoryController;

@@ -21,6 +21,19 @@ class ContactService extends BaseService implements ContactServiceInterface
     /**
      * @throws Exception
      */
+    public function countUnread()
+    {
+        $instance = app(ContactServiceInterface::class);
+        if (!$instance instanceof ContactServiceInterface) {
+            throw new Exception('Invalid instance of ContactServiceInterface');
+        }
+
+        return $instance->repository->countUnread();
+    }
+
+    /**
+     * @throws Exception
+     */
     public function create(array $data): void
     {
         $data = $this->formatData($data);

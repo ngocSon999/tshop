@@ -6,6 +6,8 @@ use Exception;
 
 interface ContactServiceInterface extends BaseServiceInterface
 {
+    public function countUnread();
+
     /**
      * @throws Exception
      */

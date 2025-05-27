@@ -39,7 +39,10 @@
                     <li><a class="nav-link" href="{{ route('admin.slider.create') }}"><i class="bi bi bi-plus-square"></i>{{ __('translation.menu.add') }}</a></li>
                 </ul>
             </li>
-            <li class="nav-item has-submenu">
+            <li class="nav-item has-submenu" style="position: relative">
+                @if(isset($countContact) && $countContact > 0)
+                    <span class="count-contact" style="font-size: 12px; position: absolute; top: 4px; left: 24px; width: 14px; height: 14px; border-radius: 50%; background-color: red; color: #ffffff; line-height: 14px; text-align: center">{{ $countContact }}</span>
+                @endif
                 <a class="nav-link" href="#contactMenu" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="bi bi-phone"></i>{{ __('translation.menu.contact') }}
                 </a>

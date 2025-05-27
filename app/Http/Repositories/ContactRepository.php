@@ -56,4 +56,9 @@ class ContactRepository extends BaseRepository implements ContactRepoInterface
             'recordsFiltered' => $recordsTotal
         ];
     }
+
+    public function countUnread(): int
+    {
+        return $this->model()::where('status', 0)->count();
+    }
 }
